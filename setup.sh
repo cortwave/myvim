@@ -1,11 +1,12 @@
 #!/bin/bash
 
 install_plug() {
-  mkdir -p "~/.vim/autoload"
+  mkdir -p ~/.vim/autoload
   curl https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim  >> ~/.vim/autoload/plug.vim
   cp .vimrc ~/.vimrc
   vim +PluginInstall +qall
-  (cd ~/.vim/bundle/YouCompleteMe || cd ~/.vim/plugged/YouCompleteMe) && ./install.py --clang-completer && vim +YcmRestartServer
+  cd ~/.vim/bundle/YouCompleteMe || cd ~/.vim/plugged/YouCompleteMe
+  ./install.py --clang-completer && vim +YcmRestartServer
 }
 
 install_mac() {
